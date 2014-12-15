@@ -1,10 +1,9 @@
 FROM ubuntu:14.04
 
-RUN apt-get update && apt-get install -y firefox
+RUN apt-get update
 
-
-#installation du package
-RUN apt-get install -y celestia sunclock stellarium gpredict megatrak 
+# installation du package
+RUN apt-get install -y celestia-gnome sunclock stellarium gpredict python 
 
 # Replace 1000 with your user / group id
 RUN export uid=1000 gid=1000 && \
@@ -15,6 +14,14 @@ RUN export uid=1000 gid=1000 && \
 	chmod 0440 /etc/sudoers.d/user && \
 	chown ${uid}:${gid} -R /home/user
 
+ADD controller.py /bin/
+ADD packages /var/
+
 USER user
 ENV HOME /home/user
-# CMD /
+
+
+EXPOSE 8000/tcp
+
+#CMD /usr/bin/celestia
+CMD python /bin/controller.py

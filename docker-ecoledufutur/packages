@@ -1,0 +1,7 @@
+{"installed": {
+	      "celestia" : ["/usr/bin/celestia", "-f"],
+	      "sunclock" : ["/usr/bin/sunclock"],
+	      "stellarium" : ["usr/bin/stellarium"],
+	      "gpredict" : ["/usr/bin/gpredict"]
+	      }
+}
