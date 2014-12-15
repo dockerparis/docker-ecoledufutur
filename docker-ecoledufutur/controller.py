@@ -23,6 +23,10 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         s.send_header("Content-type", "text/html")
         s.end_headers()
         if s.path == "/":
+            s.wfile.write("<h3> applications </h3>\n")
+            for key in json_data["installed"].keys():
+                 s.wfile.write("<a href=\"/run/{}\">{}</a></br>".format(key, key))
+        if s.path == "/json":
             s.wfile.write(json.dumps(json_data))
         if s.path.split("/")[1] == "run":
             print("run " + s.path.split("/")[2] + " [{}]".format(json_data["installed"][s.path.split("/")[2]]))
