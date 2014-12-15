@@ -1,0 +1,8 @@
+Origin: local
+Label: localrep
+Suite: stable
+Codename: trusty
+Version: 14.04
+Architectures: i386, amd64
+Components: main restricted universe multiverse
+Description: docker local repository
